@@ -100,7 +100,17 @@ document.body.addEventListener('load',onLoad(menu))
       wrapper.innerHTML=result
 
     }
-  
+       const cartIcon=document.querySelector('.cart-icon');
+       const times=document.querySelector('.times');
+       const cart=document.querySelector('.carts')
+       cartIcon.addEventListener('click',()=>{
+        cart.style.right='0%';
+        document.title="cart"
+       })
+       times.addEventListener('click',()=>{
+        cart.style.right="-100%"
+        
+       })
     function reuse(){
       const articles=document.querySelectorAll('.article');
       const cartQuantity=document.querySelector('.cart')
@@ -133,7 +143,8 @@ document.body.addEventListener('load',onLoad(menu))
         
         const foodNum=document.querySelector('.food-num');
         const amount=document.querySelector('.amount')
-        
+        const tax=document.querySelector('.tax')
+        const total=document.querySelector('.total-amount')
         btn.addEventListener('click',()=>{
         
           if(quantNum <= 0){
@@ -150,6 +161,8 @@ document.body.addEventListener('load',onLoad(menu))
               if(item.class===btn.id){ 
                 const qaunt=Number(quantity.innerHTML)
                 let numAmt=Number(amount.innerHTML)
+                let taxAmt=Number(tax.innerHTML)
+                let totalAmt=Number(total.innerHTML)
                 if(cartProduct.includes(item)){
                   item.quantity=quantity.innerHTML
                   addToCart();
@@ -164,10 +177,14 @@ document.body.addEventListener('load',onLoad(menu))
                 addToCart();
                 // const qaunt=Number(quantity.innerHTML)
                 // let numAmt=Number(amount.innerHTML)
+                let totaltax=0
                 foodNum.innerHTML='('+ cartProduct.length + ')'
                 numAmt+=qaunt*(item.price/100)
                 amount.innerHTML=numAmt
-                
+                taxAmt=(numAmt * 0.1)
+                totaltax=taxAmt.toFixed(1)
+                tax.innerHTML=totaltax
+                total.innerHTML=numAmt+Number(totaltax)
                 
                   const carts=document.querySelectorAll('.cart-product');
                   console.log(carts)
@@ -208,6 +225,11 @@ document.body.addEventListener('load',onLoad(menu))
                         const newprice=(item.price/100)*sub;
                         numAmt+=newprice
                         amount.innerHTML=numAmt
+                        taxAmt=(numAmt * 0.1)
+                        totaltax=taxAmt.toFixed(1)
+                        tax.innerHTML=totaltax
+                        total.innerHTML=numAmt+Number(totaltax)
+                    
                       })     
                     });              
                   })
