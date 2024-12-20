@@ -1,0 +1,335 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  /* background-color: #f2f7f2; */
+  font-family: sans-serif;
+}
+header{
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding:20px ;
+  margin: auto;
+  display: grid;
+  grid-template-columns:.2fr 3fr .7fr .4fr;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
+}
+.logo span{
+  color:green;
+  font-weight: bold;
+}
+.search-item{
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+
+}
+.search-item input{
+  width:50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding:10px 20px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px white;
+}
+
+.search-item button{
+  border: none;
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 1s ease-in;
+}
+.search-item button:hover{
+  border: 1px solid green;
+  background-color: transparent;
+  color: black;
+}
+header button.app{
+  width:80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  border:1px solid green;
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+header .cart-icon{
+  position: relative;
+  width:80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.cart-icon i{
+  font-size: 25px;
+}
+.cart-icon .cart{
+  position: absolute;
+  bottom:50%;
+  right: 30%;
+  background-color: red;
+  text-align: center;
+  font-size: 14px;
+  padding: 2px;
+  border-radius: 100px;
+}
+.message{
+  width: 90%;
+  margin: auto;
+}
+.message span{
+  font-weight: bold;
+}
+.food-container{
+  width: 100%;
+  margin: auto;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.food-container .food-btns{
+  margin:40px  auto;
+  display: grid;
+  grid-template-columns:1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.food-btns .btn{
+  border:1px solid green;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color:transparent;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+}
+.food-btns .btn:hover{
+  background-color: green;
+  color: white;
+}
+
+.food-container .food-wrapper{
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.food-wrapper article{
+  width: 100%;
+  margin:20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.food-wrapper article .image-wrapper{
+  width: 100%;
+  height: 30vh;
+}
+.food-wrapper article .image-wrapper img{
+  width: 100%;
+  height:30vh;
+  border-radius: 10px;
+}
+.food-wrapper article .text{
+  width: 100%;
+  margin: auto;
+  display: grid;
+  gap:.5rem;
+}
+article .text .title{
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content:center;
+  align-items: center;
+}
+article .text .title h2{
+  font-size: 20px;
+}
+article .text .title .price{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  color: green;
+}
+article .text p{
+  font-size: 16px;
+  line-height:1.4;
+}
+.show-add{
+  font-weight: 500;
+  color: green;
+}
+
+article .text .article-btns{
+  display: grid;
+  grid-template-columns: repeat(2,100px);
+  gap: 1rem;
+
+}
+article .text .qty-cont{
+  border: 1px solid green;
+  border-radius: 10px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-content: center;
+  align-items: center;
+}
+.qty-cont span{
+  text-align: center;
+}
+.qty-cont .qty-btns{
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  color:black ;
+  cursor: pointer;
+}
+article .text .article-btns .addbtn{
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+article .text .article-btns .addbtn:hover{
+  border: 1px solid green;
+  background-color: white;
+  color: black;
+}
+
+.error-message{
+  width: 100%;
+  margin: auto;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.error-message h1{
+  text-align: center;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.479);
+}
+
+.carts{
+  width: 100%;
+  margin: auto;
+}
+.carts h1{
+  font-size: 36px;
+  text-decoration: underline green;
+  text-underline-offset:10px;
+  text-align: center;
+}
+.cart-product{
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.cart-product  .article{
+  width: 100%;
+  margin:20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.cart-product  article .image-wrapper{
+  width: 100%;
+  height: 30vh;
+}
+.cart-product  article .image-wrapper img{
+  width: 100%;
+  height:30vh;
+  border-radius: 10px;
+}
+.cart-product  article .text{
+  width: 100%;
+  margin: auto;
+  display: grid;
+  gap:.5rem;
+}
+.article-btns{
+  display: grid;
+  grid-template-columns: repeat(2,100px);
+  gap: 1rem;
+
+}
+article .text .qty-cont{
+  border: 1px solid green;
+  border-radius: 10px;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  justify-content: center;
+  align-items: center;
+}
+.qty-cont span{
+  text-align: center;
+}
+.qty-cont .qty-btns{
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  color:black ;
+  cursor: pointer;
+}
+article .text .article-btns .update-btn{
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+
+.cart-product article .delete-cont{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center ;
+  gap: .4rem;
+}
+.delete-cont span{
+   font-size: 24px;
+   color: green;
+}
+.delete-cont button{
+  border: none;
+  outline: none;
+  padding:10px 25px;
+}
+.delete-cont button i{
+   font-size: 30px;
+  
+  color:red;
+  cursor: pointer;
+  transition: all 1s ease-in-out; 
+}

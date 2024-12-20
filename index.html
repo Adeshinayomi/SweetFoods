@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+  <link rel="stylesheet" href="style.css">
+  <title>Menu</title>
+</head>
+<body>
+  <header>
+    <label class="logo"><span>Sweet</span>Foods</label>
+
+    <label for="searchbar" class="search-item">
+      <input type="text" placeholder="search menu" id="searchbar">
+      <button class="search-btn">search</button>
+     </label>
+     <button class="app">Get App</button>
+     <div class="cart-icon">
+      <i class="fa fa-shopping-cart"></i>
+      <span class="cart">0</span>
+     </div>
+  </header>
+  
+  <section class="food-container">
+    <div class="food-btns">
+      <button class="btn">All</button>
+      <button class="btn" data-id="low">Low budget</button>
+      <button class="btn" data-id="high">High-budget</button>
+      
+      <button class="btn" data-id="Breakfast">breakfast</button>
+      <button class="btn" data-id="Dinner">dinner</button>
+    </div>
+    <p class="message"></p>
+    
+    <div class="food-wrapper">
+
+    </div>
+    <div class="error-message">
+
+    </div>
+  </section>
+
+
+   <section class="carts">
+    <h1 class="h1">Carts</h1>
+    <div class="cart-product">                    
+    
+    </div>
+    <div class="total">
+      <article>
+        <p>foods<span class="food-num"></span></p>
+        <p class="amount"></p>
+      </article>
+    </div>
+   </section>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+      <!--<article>
+        <div class="image-wrapper">
+          <img src="images/delicious-pumpkin-pie-soup.jpg" alt="">
+        </div>
+        <div class="text">
+          <div class="title">
+            <h2>Burger</h2>
+            <span class="price">$7.00</span>
+          </div>
+          <hr>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab debitis possimus fugit? Neque velit natus amet, eligendi facere illo harum!
+          </p>
+          <button class="addbtn">Add To Cart</button>
+        </div>
+      </article> -->
