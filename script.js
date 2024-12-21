@@ -102,14 +102,27 @@ document.body.addEventListener('load',onLoad(menu))
     }
        const cartIcon=document.querySelector('.cart-icon');
        const times=document.querySelector('.times');
+       const overlay=document.querySelector('.overlay');
        const cart=document.querySelector('.carts')
+       const cartContent=document.querySelector('.cart-content')
+       const EmptyMsg=document.querySelector('.empty-msg')
        cartIcon.addEventListener('click',()=>{
         cart.style.right='0%';
         document.title="cart"
+        times.style.display='block';
+        overlay.style.display='block'; 
+        if(totalCart===0){
+          EmptyMsg.style.display='grid'
+          cartContent.style.display='none'
+        }else{
+          cartContent.style.display='grid'
+          EmptyMsg.style.display='none'
+        }
        })
        times.addEventListener('click',()=>{
         cart.style.right="-100%"
-        
+        times.style.display='none';
+        overlay.style.display='none';
        })
     function reuse(){
       const articles=document.querySelectorAll('.article');
@@ -151,14 +164,14 @@ document.body.addEventListener('load',onLoad(menu))
             show.innerHTML=''
           }else{
             show.innerHTML='Added Sucessfully'
-            totalCart=quantNum
-            cartQuantity.innerHTML=totalCart;
+           
             
            
             for(i=0;i<menu.length;i++){
               let item=menu[i];
 
               if(item.class===btn.id){ 
+                let totaltax=0
                 const qaunt=Number(quantity.innerHTML)
                 let numAmt=Number(amount.innerHTML)
                 let taxAmt=Number(tax.innerHTML)
@@ -168,23 +181,30 @@ document.body.addEventListener('load',onLoad(menu))
                   addToCart();
                   foodNum.innerHTML='('+ cartProduct.length + ')'
                   numAmt+=qaunt*(item.price/100)
-                  amount.innerHTML=numAmt
-                  return;
+                  amount.innerHTML=numAmt.toFixed(1)
+                  taxAmt=(numAmt * 0.1)
+                  totaltax=taxAmt.toFixed(1)
+                  tax.innerHTML=totaltax
+                  totalAmt=numAmt+Number(totaltax)
+                  total.innerHTML=totalAmt.toFixed(1)
+                  
+                }else{
+                  totalCart++
+                  cartQuantity.innerHTML=totalCart;
+                  item.quantity=quantity.innerHTML;
+                  cartProduct.push(item)
+                  console.log(cartProduct)
+                  addToCart();
+                  foodNum.innerHTML='('+ cartProduct.length + ')'
+                  numAmt+=qaunt*(item.price/100)
+                  amount.innerHTML=numAmt.toFixed(1)
+                  taxAmt=(numAmt * 0.1)
+                  totaltax=taxAmt.toFixed(1)
+                  tax.innerHTML=totaltax
+                  totalAmt=numAmt+Number(totaltax)
+                  total.innerHTML=totalAmt.toFixed(1)
                 }
-                item.quantity=quantity.innerHTML;
-                cartProduct.push(item)
-                console.log(cartProduct)
-                addToCart();
-                // const qaunt=Number(quantity.innerHTML)
-                // let numAmt=Number(amount.innerHTML)
-                let totaltax=0
-                foodNum.innerHTML='('+ cartProduct.length + ')'
-                numAmt+=qaunt*(item.price/100)
-                amount.innerHTML=numAmt
-                taxAmt=(numAmt * 0.1)
-                totaltax=taxAmt.toFixed(1)
-                tax.innerHTML=totaltax
-                total.innerHTML=numAmt+Number(totaltax)
+
                 
                   const carts=document.querySelectorAll('.cart-product');
                   console.log(carts)
@@ -195,7 +215,7 @@ document.body.addEventListener('load',onLoad(menu))
                       const cartQty=cartIt.querySelector('.cart-qty'); 
                       const  updateBtn=cartIt.querySelector('.update-btn');
                       const cartBtn=cartIt.querySelectorAll('.cart-btns');
-                  
+                      const delBtn=cartIt.querySelector('.addbtn');
                   
                       cartBtn.forEach((btn)=>{ 
                         btn.addEventListener('click',()=>{
@@ -213,28 +233,52 @@ document.body.addEventListener('load',onLoad(menu))
                           }
                         });
                   
-                      })
-                      updateBtn.addEventListener('click',()=>{
-                        totalCart=quantNum
-                        cartQuantity.innerHTML=totalCart;
-      
+
+                      updateBtn.addEventListener('click',()=>{      
                         const update=Number(updateQty.innerHTML);
                         updateQty.innerHTML=cartQty.innerHTML 
                         const updatedQuant=Number(updateQty.innerHTML);
                         const sub=updatedQuant - update
                         const newprice=(item.price/100)*sub;
                         numAmt+=newprice
-                        amount.innerHTML=numAmt
+                        amount.innerHTML=numAmt.toFixed(1)
                         taxAmt=(numAmt * 0.1)
                         totaltax=taxAmt.toFixed(1)
                         tax.innerHTML=totaltax
-                        total.innerHTML=numAmt+Number(totaltax)
+                        totalAmt=numAmt+Number(totaltax)
+                        total.innerHTML=totalAmt.toFixed(1)
+                        if(update===0){
+                          totalCart--
+                          cartQuantity.innerHTML=totalCart;
+                        
+                        }
                     
-                      })     
+                      })  
+                    })
+                    delBtn.addEventListener('click',()=>{
+                      cartProduct.splice(i,1);
+                      addToCart();
+                      const update=Number(updateQty.innerHTML);
+                      const deletedAmt=(item.price/100)*update
+                      numAmt-=deletedAmt
+                      amount.innerHTML=numAmt.toFixed(1)
+                      taxAmt=(numAmt * 0.1)
+                      totaltax=taxAmt.toFixed(1)
+                      tax.innerHTML=totaltax
+                      totalAmt=numAmt+Number(totaltax)
+                      total.innerHTML=totalAmt.toFixed(1)
+                      
+                      totalCart--
+                      cartQuantity.innerHTML=totalCart;
+
+                      if(totalCart===0){
+                                  EmptyMsg.style.display='grid'
+                            cartContent.style.display='none'
+                      }
+                    })
+ 
                     });              
                   })
-                
-
               }
             }
           }
@@ -333,8 +377,7 @@ document.body.addEventListener('load',onLoad(menu))
           <div class="delete-cont">
             <span class="price">$${value.price/100}</span>
             <button class="addbtn" onclick="
-             cartProduct.splice(${index},1);
-             addToCart();
+ 
             "><i class="fa fa-trash"></i></button>
           </div>
        </article>

@@ -23,9 +23,11 @@
       <span class="cart">0</span>
      </div>
   </header>
-  <!-- <span class="times">
+  <div class="overlay">
+  </div>
+  <span class="times">
     <i class="fa fa-times"></i>
-   </span> -->
+   </span>
   <section class="food-container">
     <div class="food-btns">
       <button class="btn">All</button>
@@ -47,30 +49,36 @@
 
 
    <section class="carts">
-    <div>
-       <div class="cart-product"> 
-
-    
-       </div>
+    <div class="empty-msg">
+      <p>Your Cart is Empty!</p>
+    </div>
+    <div class="cart-content">
+      <div>
+        <div class="cart-product"> 
+ 
+     
+        </div>
+     </div>
+ 
+     <div class="total">
+       <h1>Total Sum</h1>
+       <article>
+         <p>foods<span class="food-num"></span></p>
+         <p>$<span class="amount"></span></p>
+       </article>
+       <article>
+         <p>Tax(10%)</p>
+         <p>$<span class="tax"></span></p>
+       </article>
+       <hr>
+       <article>
+         <p>Total Amount</p>
+         <p>$<span class="total-amount"></span></p>
+       </article>
+       <button>Checkout</button>
+     </div>
     </div>
 
-    <div class="total">
-      <h1>Total Sum</h1>
-      <article>
-        <p>foods<span class="food-num"></span></p>
-        <p>$<span class="amount"></span></p>
-      </article>
-      <article>
-        <p>Tax(10%)</p>
-        <p>$<span class="tax"></span></p>
-      </article>
-      <hr>
-      <article>
-        <p>Total Amount</p>
-        <p>$<span class="total-amount"></span></p>
-      </article>
-      <button>Checkout</button>
-    </div>
    </section>
   <script src="script.js"></script>
 </body>
