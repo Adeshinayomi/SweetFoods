@@ -224,40 +224,47 @@ document.body.addEventListener('load',onLoad(menu))
                   const carts=document.querySelectorAll('.cart-product');
                   carts.forEach((cart)=>{
                     const cartitem=cart.querySelectorAll('.cart-container');
-                    cartitem.forEach((cartIt)=>{
+                    cartitem.forEach((cartIt,index)=>{
                       const updateQty=cartIt.querySelector('.val-qty');
                       const cartQty=cartIt.querySelector('.cart-qty'); 
                       const  updateBtn=cartIt.querySelector('.update-btn');
                       const cartBtn=cartIt.querySelectorAll('.cart-btns');
                       const delBtn=cartIt.querySelector('.addbtn');
+                      const price=cartIt.querySelector('.price');
                   
-                      // increasing cart food item quantity
+                        // increasing cart food item quantity
                       cartBtn.forEach((btn)=>{ 
-                        btn.addEventListener('click',()=>{
-                          const id=btn.id 
-                          const val=Number(cartQty.innerHTML);
-                          if(id==='minus'){
-                            if(val>0){
-                              quantNum--
-                              cartQty.innerHTML--
+                          btn.addEventListener('click',()=>{
+                            const id=btn.id 
+                            const val=Number(cartQty.innerHTML);
+                            if(id==='minus'){
+                              if(val>0){
+                                quantNum--
+                                cartQty.innerHTML--
+                              }
+                              
+                            }else{
+                              quantNum++
+                              cartQty.innerHTML++
                             }
-                            
-                          }else{
-                            quantNum++
-                            cartQty.innerHTML++
-                          }
-                        });
-                  
-                        // updating the quantity on the webpage and total food amount
-                      updateBtn.addEventListener('click',()=>{      
+                          });
+                    
+                      })
+                       // updating the quantity on the webpage and total food amount
+                      updateBtn.addEventListener('click',()=>{   
+                        cartProduct[index].quantity=cartQty.innerHTML
+                        console.log(cartProduct)
+                        addToCart()
+                        const priceAmt=Number(price.innerHTML)
                         const update=Number(updateQty.innerHTML);
                         updateQty.innerHTML=cartQty.innerHTML 
                         const updatedQuant=Number(updateQty.innerHTML);
                         const sub=updatedQuant - update
-                       
-
+                        
+                        
                         // calculating cost of foods after updating food quantity
-                        const newprice=(item.price/100)*sub;
+                        
+                        const newprice=priceAmt*sub;
                         numAmt+=newprice
                         amount.innerHTML=numAmt.toFixed(1)
                         taxAmt=(numAmt * 0.1)
@@ -272,49 +279,27 @@ document.body.addEventListener('load',onLoad(menu))
                         }
                     
                       })  
-                    })
-                    // deleting cart food item
-                    delBtn.addEventListener('click',()=>{
-                      const update=Number(updateQty.innerHTML);
-                      // calculating cost of foods after deleting a food item
-                      const deletedAmt=(item.price/100)*update
-                      numAmt-=deletedAmt
-                      amount.innerHTML=numAmt.toFixed(1)
-                      taxAmt=(numAmt * 0.1)
-                      totaltax=taxAmt.toFixed(1)
-                      tax.innerHTML=totaltax
-                      totalAmt=numAmt+Number(totaltax)
-                      total.innerHTML=totalAmt.toFixed(1)
-                      
-                      // decreasing total item in cart after deleting an item
-                      totalCart--
-                      cartQuantity.innerHTML=totalCart;
+                       // deleting cart food item
 
-                      if(totalCart===0){
-                         EmptyMsg.style.display='grid'
-                         cartContent.style.display='none'
-                      }
-                    })
- 
                     });              
                   })
-              }
-            }
-          }
+               }
+             }
+           }
            setTimeout(()=>{
             show.innerHTML=''
            },3000);        
-         }); 
+          }); 
         })
-    
-    }
+     
+      }
  
 
     // search functionality
-  const errorMessage=document.querySelector('.error-message');
-  const message=document.querySelector('.message');
+   const errorMessage=document.querySelector('.error-message');
+   const message=document.querySelector('.message');
    
-    
+  
   // filtering menu array to search for food
     function search(){
       const searchval=searchbar.value.toLowerCase()
@@ -375,11 +360,10 @@ document.body.addEventListener('load',onLoad(menu))
         reuse();       
       });
     });
-
+ 
 
     // loading cart item on the webpage
     function addToCart(){
-      console.log(cartProduct)
       let cartHtml=''
       cartProduct.forEach((value,index)=>{
        const Html=`
@@ -406,10 +390,35 @@ document.body.addEventListener('load',onLoad(menu))
             </div>
           </div>
           <div class="delete-cont">
-            <span class="price">$${value.price/100}</span>
+            <span class="price">${value.price/100}</span>
             <button class="addbtn" onclick="
-             cartProduct.splice(${index},1);
-             addToCart();
+            
+              const cartQuantity=document.querySelector('.cart')
+              const updateQty=document.querySelector('.val-qty');
+              const amount=document.querySelector('.amount')
+              const tax=document.querySelector('.tax')
+              const total=document.querySelector('.total-amount')
+              let numAmt=Number(amount.innerHTML)
+              let taxAmt=Number(tax.innerHTML)
+              let totalAmt=Number(total.innerHTML)
+             
+              
+              cartProduct.splice(${index},1)
+              addToCart();
+              const dele=${value.price/100}*${value.quantity}
+              numAmt-=dele
+              amount.innerHTML=numAmt.toFixed(1)
+              taxAmt=(numAmt * 0.1)
+              totaltax=taxAmt.toFixed(1)
+              tax.innerHTML=totaltax
+              totalAmt=numAmt+Number(totaltax)
+              total.innerHTML=totalAmt.toFixed(1)
+              totalCart--
+              cartQuantity.innerHTML=totalCart;
+              if(totalCart===0){
+                EmptyMsg.style.display='grid'
+                cartContent.style.display='none'
+              }
             "><i class="fa fa-trash"></i></button>
           </div>
        </article>
