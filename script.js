@@ -1,4 +1,4 @@
-let quantNum=0
+
 let totalCart=0;
 
 //page items 
@@ -138,6 +138,7 @@ document.body.addEventListener('load',onLoad(menu))
       const articles=document.querySelectorAll('.article');
       const cartQuantity=document.querySelector('.cart')
       articles.forEach((article)=>{
+        let quantNum=0
         const btn=article.querySelector('.addbtn');
         const show=article.querySelector('.show-add');
         let quantity=article.querySelector('.quantity') 
@@ -187,7 +188,8 @@ document.body.addEventListener('load',onLoad(menu))
                 let totalAmt=Number(total.innerHTML)
                 // increasing food item if it is already in the cart
                 if(cartProduct.includes(item)){
-                  item.quantity=quantNum
+                  const acc= Number(item.quantity)+quantNum
+                  item.quantity=acc
                   addToCart();
 
                   // calculating cost of foods after increasing quantity
@@ -220,69 +222,6 @@ document.body.addEventListener('load',onLoad(menu))
                 }
 
                 
-                  // cart item functionality
-                  const carts=document.querySelectorAll('.cart-product');
-                  carts.forEach((cart)=>{
-                    const cartitem=cart.querySelectorAll('.cart-container');
-                    cartitem.forEach((cartIt,index)=>{
-                      const updateQty=cartIt.querySelector('.val-qty');
-                      const cartQty=cartIt.querySelector('.cart-qty'); 
-                      const  updateBtn=cartIt.querySelector('.update-btn');
-                      const cartBtn=cartIt.querySelectorAll('.cart-btns');
-                      const delBtn=cartIt.querySelector('.addbtn');
-                      const price=cartIt.querySelector('.price');
-                  
-                        // increasing cart food item quantity
-                      cartBtn.forEach((btn)=>{ 
-                          btn.addEventListener('click',()=>{
-                            const id=btn.id 
-                            const val=Number(cartQty.innerHTML);
-                            if(id==='minus'){
-                              if(val>0){
-                                quantNum--
-                                cartQty.innerHTML--
-                              }
-                              
-                            }else{
-                              quantNum++
-                              cartQty.innerHTML++
-                            }
-                          });
-                    
-                      })
-                       // updating the quantity on the webpage and total food amount
-                      updateBtn.addEventListener('click',()=>{   
-                        cartProduct[index].quantity=cartQty.innerHTML
-                        console.log(cartProduct)
-                        addToCart()
-                        const priceAmt=Number(price.innerHTML)
-                        const update=Number(updateQty.innerHTML);
-                        updateQty.innerHTML=cartQty.innerHTML 
-                        const updatedQuant=Number(updateQty.innerHTML);
-                        const sub=updatedQuant - update
-                        
-                        
-                        // calculating cost of foods after updating food quantity
-                        
-                        const newprice=priceAmt*sub;
-                        numAmt+=newprice
-                        amount.innerHTML=numAmt.toFixed(1)
-                        taxAmt=(numAmt * 0.1)
-                        totaltax=taxAmt.toFixed(1)
-
-                        tax.innerHTML=totaltax
-                        totalAmt=numAmt+Number(totaltax)
-                        total.innerHTML=totalAmt.toFixed(1)
-                        if(update===0){
-                          totalCart--
-                          cartQuantity.innerHTML=totalCart;
-                        }
-                    
-                      })  
-                       // deleting cart food item
-
-                    });              
-                  })
                }
              }
            }
@@ -380,14 +319,6 @@ document.body.addEventListener('load',onLoad(menu))
             <h4>${value.category}</h4>
             <p >quantity:<span class="val-qty">${value.quantity}</span></p>
             <span class="show-add"></span>
-            <div class="cart-buttons">
-              <p class="cart-cont">
-                <button class="cart-btns" id="minus">-</button>
-                <span class="cart-qty">${value.quantity}</span>
-                <button class="cart-btns" id="plus">+</button>
-              </p>
-              <button class="update-btn">update</button>
-            </div>
           </div>
           <div class="delete-cont">
             <span class="price">${value.price/100}</span>
@@ -458,5 +389,3 @@ document.body.addEventListener('load',onLoad(menu))
       }
     }) 
   })*/
-
-  

@@ -326,6 +326,7 @@ article .text .article-btns .addbtn:hover{
   display: grid;
   gap:.5rem;
 }
+/* 
 .cart-buttons{
   display: grid;
   grid-template-columns: repeat(2,100px);
@@ -360,7 +361,7 @@ article .text .article-btns .addbtn:hover{
   border-radius: 10px;
   cursor: pointer;
   transition: all 1s ease-in-out;
-}
+} */
 
 
 .cart-product .cart-container .delete-cont{
