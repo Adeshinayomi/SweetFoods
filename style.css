@@ -372,7 +372,8 @@ article .text .article-btns .addbtn:hover{
   align-items:center ;
   gap: .4rem;
 }
-.delete-cont span{
+
+.delete-cont p{
    font-size: 24px;
    color: green;
 }

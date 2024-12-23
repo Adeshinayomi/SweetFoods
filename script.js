@@ -321,7 +321,7 @@ document.body.addEventListener('load',onLoad(menu))
             <span class="show-add"></span>
           </div>
           <div class="delete-cont">
-            <span class="price">${value.price/100}</span>
+            <p>$<span class="price">${value.price/100}</span></p>
             <button class="addbtn" onclick="
             
               const cartQuantity=document.querySelector('.cart')
