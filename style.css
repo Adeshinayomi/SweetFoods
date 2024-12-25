@@ -412,3 +412,50 @@ article .text .article-btns .addbtn:hover{
   font-size:15px;
   padding:10px;
 }
+footer{
+  width: 100%;
+  background-color: rgba(67, 109, 72, 0.691);
+  color: rgba(0, 0, 0, 0.621);
+  margin-top:100px;
+  display: grid;
+  gap: 1rem;
+}
+footer .footer-cont{
+  width: 90%;
+  margin:50px auto;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
+.footer-cont ul{
+  width: 100%;
+  /* margin: auto; */
+  display: grid;
+  gap:1rem;  
+}
+.footer-cont ul h2{
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.897);
+}
+.footer-cont ul a{
+  color: rgba(0, 0, 0, 0.621);
+  cursor: pointer;
+}
+footer .footer-last{
+  width: 90%;
+  padding: 10px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr .1fr;
+  justify-content: center;
+  align-items: center;
+}
+footer .footer-last .footer-icon{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.footer-last .footer-icon i{
+  padding: 10px;
+  border-radius: 100px;
+  border: 1px solid black;
+}
