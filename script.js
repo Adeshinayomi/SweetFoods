@@ -7,6 +7,7 @@ const menu=[
     quantity:0,
     class:'burger',
     id:'low',
+    dataId:"all",
     category:'Dinner',
     title:'Burger',
     price:700,
@@ -17,6 +18,7 @@ const menu=[
     quantity:0,
     class:'meatpie',
     id:'low',
+    dataId:"all",
     category:'Breakfast',
     title:'Meatpie',
     price:530,
@@ -27,6 +29,7 @@ const menu=[
     quantity:0,
     class:'cake',
     id:'high',
+    dataId:"all",
     category:'Breakfast',
     title:'Cake',
     price:1200,
@@ -37,6 +40,7 @@ const menu=[
     quantity:0,
     class:'muffin',
     id:'low',
+    dataId:"all",
     category:'Dinner',
     title:'Muffin',
     price:300,
@@ -47,6 +51,7 @@ const menu=[
     quantity:0,
     class:'crossiant',
     id:'high',
+    dataId:"all",
     category:'Breakfast',
     title:'Crossiant',
     price:1150,
@@ -114,6 +119,7 @@ document.body.addEventListener('load',onLoad(menu))
        const EmptyMsg=document.querySelector('.empty-msg')
        cartIcon.addEventListener('click',()=>{
         cart.style.right='0%';
+        cart.style.display='block';
         document.title="SweetFoods-Cart"
         times.style.display='block';
         overlay.style.display='block'; 
@@ -293,18 +299,25 @@ document.body.addEventListener('load',onLoad(menu))
     
     // Button Functionality
     foodbtns.forEach(function(btn){
-      btn.addEventListener('click',()=>{
+      btn.addEventListener('click',(e)=>{
         message.innerHTML=''
         errorMessage.innerHTML=''
-        let id=btn.dataset.id
+        // let id=btn.dataset.id
+        const id=e.target.dataset.id
+        if(id){
+          foodbtns.forEach((btn)=>{
+            btn.classList.remove('active');
+            e.target.classList.add('active');
+          })
+        }
         // filtering menu to match category of foods
         result= menu.filter((value)=>{
           if(id === value.id){
             return value.id === id;
+          }else if(id === value.dataId){
+            return value.dataId === id;
           }else if(id){
             return value.category === id;
-          }else{
-            return value
           }
         });
         
