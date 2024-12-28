@@ -4,21 +4,16 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  /* background-color: #f2f7f2; */
   font-family: sans-serif;
  
 }
+html{
+  height:100%;
+}
+
 body{
   overflow-x:hidden;
-}
-.overlay{
-  position: absolute;
-  top:0;
-  width: 100%;
-  height:100vh;
-  background:linear-gradient(rgba(0, 0, 0, 0.767),rgba(0, 0, 0, 0.664));
-  display: none;
-  z-index: 1;
+  height:100%;
 }
 header{
   width: 100%;
@@ -102,11 +97,11 @@ header .cart-icon{
   left: 2%;
   display: none;
   z-index: 4;
+  
 }
 .times i{
   font-size: 25px;
   cursor: pointer;
-  color: white;
 }
 .cart-icon .cart{
   position: absolute;
@@ -273,8 +268,7 @@ article .text .article-btns .addbtn:hover{
   top: 12%;
   right:-100%;
   width: 80%;
-  height: 100%;
-
+  height:auto;
   transition: all 1s ease-in-out;
   z-index: 3;
   
@@ -477,15 +471,6 @@ footer .footer-last .footer-icon{
 }
 
 @media (min-width:300px) and (max-width:767px){
-  .overlay{
-    position: absolute;
-    top:0;
-    width: 100%;
-    height:100vh;
-    background:linear-gradient(rgba(0, 0, 0, 0.767),rgba(0, 0, 0, 0.664));
-    display: none;
-    z-index: 1;
-  }
   header{
     width: 100%;
     background-color: black;
@@ -566,15 +551,14 @@ footer .footer-last .footer-icon{
   }
   .times{
     position: absolute;
-    top: 13%;
-    left: 2%;
+    top: 11%;
+    left: 0%;
     display: none;
     z-index: 4;
   }
   .times i{
     font-size: 25px;
     cursor: pointer;
-    color: white;
   }
   .cart-icon .cart{
     position: absolute;
@@ -737,12 +721,12 @@ footer .footer-last .footer-icon{
     background-color: black;
     color: white;
     position: absolute;
-    top: 12%;
+    top: 11%;
     right:-100%;
-    width: 90%;
-    height: 100%;
+    width: 95%;
+    height:auto;
     transition: all 1s ease-in-out;
-    z-index: 3;
+    z-index: 1;
     display: none;
   }
   .carts .empty-msg{
@@ -788,7 +772,7 @@ footer .footer-last .footer-icon{
   }
   .cart-product  .cart-container .image-wrapper img{
     width: 100%;
-    height:30vh;
+    height:20vh;
     border-radius: 10px;
   }
   .cart-product  .cart-container .text{
