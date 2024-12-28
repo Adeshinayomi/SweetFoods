@@ -113,6 +113,7 @@ document.body.addEventListener('load',onLoad(menu))
        const cartIcon=document.querySelector('.cart-icon');
        const times=document.querySelector('.times');
        const showCarts=document.querySelector('.show-carts');
+       const overlay=document.querySelector('.overlay');
        const cart=document.querySelector('.carts')
        const cartContent=document.querySelector('.cart-content')
        const EmptyMsg=document.querySelector('.empty-msg')
@@ -121,6 +122,7 @@ document.body.addEventListener('load',onLoad(menu))
         cart.style.display='block';
         document.title="SweetFoods-Cart"
         times.style.display='block';
+        overlay.style.display='block'; 
         if(totalCart===0){
           EmptyMsg.style.display='grid'
           cartContent.style.display='none'
@@ -134,14 +136,15 @@ document.body.addEventListener('load',onLoad(menu))
         cart.style.right="-100%"
         cart.style.display="none"
         times.style.display='none';
+        overlay.style.display='none';
         
         document.title="SweetFoods-Home"
        })
        showCarts.addEventListener('click',()=>{
         cart.style.right='0%';
-        cart.style.display='block';
         document.title="SweetFoods-Cart"
         times.style.display='block';
+        overlay.style.display='block'; 
         if(totalCart===0){
           EmptyMsg.style.display='grid'
           cartContent.style.display='none'
