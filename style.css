@@ -437,7 +437,6 @@ footer .footer-cont{
 }
 .footer-cont ul{
   width: 100%;
-  /* margin: auto; */
   display: grid;
   gap:1rem;  
 }
@@ -551,8 +550,8 @@ footer .footer-last .footer-icon{
   }
   .times{
     position: absolute;
-    top: 13%;
-    left: 2%;
+    top: 11%;
+    left: 0%;
     display: none;
     z-index: 4;
   }
@@ -721,12 +720,12 @@ footer .footer-last .footer-icon{
     background-color: black;
     color: white;
     position: absolute;
-    top: 12%;
+    top: 11%;
     right:-100%;
-    width: 90%;
+    width: 95%;
     height:auto;
     transition: all 1s ease-in-out;
-    z-index: 3;
+    z-index:1;
     display: none;
   }
   .carts .empty-msg{
